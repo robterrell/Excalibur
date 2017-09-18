@@ -53,13 +53,35 @@ export class Animation implements IDrawable {
    /**
     * Flip each frame vertically. Sets [[Sprite.flipVertical]].
     */
-   public flipVertical: boolean = false;
+   public _flipVertical: boolean = false;
+
+   get flipVertical(): boolean {
+      return this._flipVertical;
+   }
+
+   set flipVertical( f:boolean ) {
+      this._flipVertical = f;
+      for (var i of this.sprites) {
+            i.flipVertical = f;
+      }
+   }
 
    /**
     * Flip each frame horizontally. Sets [[Sprite.flipHorizontal]].
     */
-   public flipHorizontal: boolean = false;
-   
+   private _flipHorizontal: boolean;
+
+   get flipHorizontal(): boolean {
+      return this._flipHorizontal;
+   }
+
+   set flipHorizontal( f:boolean ) {
+      this._flipHorizontal = f;
+      for (var i of this.sprites) {
+            i.flipHorizontal = f;
+      }
+   }
+
    public width: number = 0;
    public height: number = 0;
    public naturalWidth: number = 0;
